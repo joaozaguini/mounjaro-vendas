@@ -126,11 +126,11 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   margin-bottom: 16px;
   letter-spacing: -0.5px;
 }
-.hero h1 span {
+.hero h1 span.highlight {
   font-size: inherit;
   font-weight: 900;
   color: var(--primary);
-  background: linear-gradient(90deg, var(--primary), #FFF3D8);
+  background: linear-gradient(90deg, var(--primary), #eab657);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
