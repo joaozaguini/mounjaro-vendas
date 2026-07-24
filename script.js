@@ -129,10 +129,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const downsellPopup = document.getElementById('downsellPopup');
   const closePopupBtn = document.getElementById('closePopupBtn');
 
+  let popupInterval;
   if (btnStarter && downsellPopup) {
     btnStarter.addEventListener('click', (e) => {
       e.preventDefault();
       downsellPopup.style.display = 'flex';
+      
+      // Timer de 60 segundos do Popup
+      const popupTimerEl = document.getElementById('popup-timer');
+      if (popupTimerEl) {
+        let timeLeft = 60;
+        popupTimerEl.textContent = '01:00';
+        clearInterval(popupInterval);
+        popupInterval = setInterval(() => {
+          timeLeft--;
+          if (timeLeft <= 0) {
+            clearInterval(popupInterval);
+            popupTimerEl.textContent = '00:00';
+          } else {
+            const m = Math.floor(timeLeft / 60);
+            const s = timeLeft % 60;
+            popupTimerEl.textContent = `0${m}:${s.toString().padStart(2, '0')}`;
+          }
+        }, 1000);
+      }
     });
   }
 

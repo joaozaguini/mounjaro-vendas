@@ -120,7 +120,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   backdrop-filter: blur(5px);
 }
 .hero h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 16px;
@@ -139,7 +139,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
     padding: 60px 8% 60px;
   }
   .hero h1 { 
-    font-size: 48px; 
+    font-size: 43px; 
     line-height: 1.15;
     letter-spacing: -1px;
     margin-bottom: 20px;
@@ -817,18 +817,25 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   z-index: 1000;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
 .downsell-box {
   background: var(--white);
-  border-radius: 24px;
-  padding: 40px;
+  border-radius: 20px;
+  padding: 24px 20px;
   max-width: 440px;
   width: 100%;
   text-align: center;
   position: relative;
   animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  max-height: 95vh;
+  overflow-y: auto;
+}
+@media(min-width: 768px) {
+  .downsell-box {
+    padding: 40px;
+  }
 }
 @keyframes slideUp {
   from { transform: translateY(40px) scale(0.95); opacity: 0; }
@@ -836,8 +843,8 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 }
 .downsell-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
   background: var(--bg-light);
   border: none;
   width: 32px;
@@ -869,9 +876,9 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 }
 .popup-offer-box {
   border: 2px dashed var(--primary);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 24px 0;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
   background: rgba(221, 153, 52, 0.05);
 }
 .popup-title {
@@ -880,29 +887,36 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .popup-old-price {
   text-decoration: line-through;
   color: var(--gray-400);
-  font-size: 15px;
+  font-size: 14px;
 }
 .popup-new-price {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 900;
   color: var(--primary);
   line-height: 1;
   letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+.popup-desc {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 .downsell-cta {
   display: block;
   background: var(--success);
   color: var(--white);
-  padding: 20px;
+  padding: 16px;
   border-radius: 50px;
   font-weight: 900;
+  font-size: 14px;
   text-decoration: none;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
@@ -914,7 +928,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 }
 .downsell-skip-link {
   color: var(--gray-400);
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: underline;
   transition: color 0.2s;
 }
