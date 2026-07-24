@@ -457,6 +457,21 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   justify-content: space-between;
   scroll-snap-align: center;
 }
+.prova-img-card {
+  width: 320px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -10px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.prova-img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 .carousel-nav-buttons {
   display: flex;
   justify-content: center;
