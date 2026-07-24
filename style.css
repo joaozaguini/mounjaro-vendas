@@ -87,7 +87,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 .hero {
   background: radial-gradient(ellipse at 50% 0%, #152d4c 0%, var(--bg-dark) 100%);
   color: var(--white);
-  padding: 50px 5% 40px;
+  padding: 40px 5% 40px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -136,7 +136,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 }
 @media(min-width: 768px) {
   .hero {
-    padding: 60px 8% 60px;
+    padding: 50px 8% 60px;
   }
   .hero h1 { 
     font-size: 43px; 
