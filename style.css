@@ -530,7 +530,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 
 /* BÔNUS */
 .bonus-section {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 .bonus-container {
   border: 1px solid rgba(7, 16, 28, 0.15); /* Borda fina na cor dark */
@@ -964,10 +964,10 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   background: linear-gradient(var(--white), var(--white)) padding-box,
               linear-gradient(135deg, #B8860B 0%, var(--primary) 60%, #E6C163 100%) border-box;
   color: var(--text-dark);
-  padding: 60px 40px;
+  padding: 30px 40px;
   border-radius: 24px;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   border: 3px solid transparent;
   box-shadow: none;
 }
@@ -998,7 +998,7 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
 
 /* FAQ */
 .faq-section {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 .faq {
   max-width: 700px;
