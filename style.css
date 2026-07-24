@@ -180,9 +180,9 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   justify-content: center;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: var(--white);
-  padding: 20px 40px;
+  padding: 16px 24px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   border-radius: 50px;
   box-shadow: 0 15px 30px -5px rgba(221, 153, 52, 0.4);
@@ -192,6 +192,12 @@ h1, h2, h3, .hero-badge, .plan-price, .plan-name, .downsell-cta {
   margin: 0 auto 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.hero-cta.final-cta {
+  font-size: 13px;
+  padding: 14px 20px;
+  margin-bottom: 0;
+  white-space: nowrap;
 }
 .hero-cta:hover {
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
