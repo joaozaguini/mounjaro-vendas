@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Reveal Animations (Intersection Observer)
   const revealOptions = {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
+    threshold: 0.05,
+    rootMargin: "0px 0px 50px 0px"
   };
   
   const revealObserver = new IntersectionObserver(function(entries, observer) {
