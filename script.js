@@ -210,10 +210,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (wrapper && prevBtn && nextBtn) {
     const cardWidth = 340; // 320px card + 20px gap
     nextBtn.addEventListener('click', () => {
-      wrapper.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      const isAtEnd = wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth - 10;
+      if (isAtEnd) {
+        wrapper.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        wrapper.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
     });
     prevBtn.addEventListener('click', () => {
-      wrapper.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      const isAtStart = wrapper.scrollLeft <= 10;
+      if (isAtStart) {
+        wrapper.scrollTo({ left: wrapper.scrollWidth, behavior: 'smooth' });
+      } else {
+        wrapper.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
     });
   }
 
