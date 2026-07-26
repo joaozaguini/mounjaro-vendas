@@ -29,7 +29,7 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '2125658261350597');
-  // PageView é enviado via UTMify CAPI (server-side) — não disparar aqui para evitar duplicação
+  fbq('track', 'PageView'); // Browser-side imediato — Meta deduplica com o CAPI da UTMify
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2125658261350597&ev=PageView&noscript=1" />
