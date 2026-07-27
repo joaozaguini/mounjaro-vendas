@@ -1,3 +1,6 @@
+// Suprime erro webkit.messagehandlers no WebView iOS (Facebook/Instagram App)
+try { window.webkit.messagehandlers; } catch(e) {}
+
 document.addEventListener('DOMContentLoaded', () => {
   // 0. ANTI-KIBE: Bloqueios de inspeção e cópia
   document.addEventListener('contextmenu', event => event.preventDefault()); // Bloqueia botão direito
@@ -73,56 +76,61 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 4. Reveal Animations (Intersection Observer)
-  const revealOptions = {
-    threshold: 0.05,
-    rootMargin: "0px 0px 50px 0px"
-  };
-  
-  const revealObserver = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target); // Only animate once
-    });
-  }, revealOptions);
+  const revealElements = document.querySelectorAll('.reveal');
 
-  document.querySelectorAll('.reveal').forEach(reveal => {
-    revealObserver.observe(reveal);
-  });
+  try {
+    if (!('IntersectionObserver' in window)) throw new Error('no observer');
+
+    const revealOptions = {
+      threshold: 0.05,
+      rootMargin: "0px 0px 50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      });
+    }, revealOptions);
+
+    revealElements.forEach(reveal => revealObserver.observe(reveal));
+
+  } catch(e) {
+    // Fallback: WebView ou browser sem suporte — mostra tudo imediatamente
+    revealElements.forEach(el => el.classList.add('active'));
+  }
 
   // 4.5 Focus Highlight Animations (Intersection Observer)
-  // Triggers when element is near the center of the viewport
-  const focusOptions = {
-    threshold: 0.5,
-    rootMargin: "-25% 0px -25% 0px" 
-  };
+  try {
+    const focusOptions = {
+      threshold: 0.5,
+      rootMargin: "-25% 0px -25% 0px"
+    };
 
-  const focusObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-focus');
-        
-        // Garante que apenas um card de cada grupo fique em destaque por vez
-        const focusGroups = ['bonus-card', 'step-card'];
-        focusGroups.forEach(className => {
-          if (entry.target.classList.contains(className)) {
-            document.querySelectorAll(`.${className}.in-focus`).forEach(card => {
-              if (card !== entry.target) {
-                card.classList.remove('in-focus');
-              }
-            });
-          }
-        });
-      } else {
-        entry.target.classList.remove('in-focus');
-      }
-    });
-  }, focusOptions);
+    const focusObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-focus');
+          const focusGroups = ['bonus-card', 'step-card'];
+          focusGroups.forEach(className => {
+            if (entry.target.classList.contains(className)) {
+              document.querySelectorAll(`.${className}.in-focus`).forEach(card => {
+                if (card !== entry.target) card.classList.remove('in-focus');
+              });
+            }
+          });
+        } else {
+          entry.target.classList.remove('in-focus');
+        }
+      });
+    }, focusOptions);
 
-  // Focus observer setup will be handled dynamically or by static class assignment in HTML
-  document.querySelectorAll('.focus-item').forEach(item => {
-    focusObserver.observe(item);
-  });
+    document.querySelectorAll('.focus-item').forEach(item => focusObserver.observe(item));
+  } catch(e) {
+    // Fallback: adiciona in-focus em todos se observer falhar
+    document.querySelectorAll('.focus-item').forEach(el => el.classList.add('in-focus'));
+  }
 
   // 5. Downsell Popup Logic
   const btnStarter = document.getElementById('btnStarter');
